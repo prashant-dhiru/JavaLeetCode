@@ -1,0 +1,30 @@
+public class Codec {
+    
+    private Map<String,String> longToShort;
+    private Map<String,String> shortToLong;
+    int afterEncoding;
+    
+    Codec(){
+        // longToShort = new HashMap<>();
+        shortToLong = new HashMap<>();
+        afterEncoding = 0 ;
+    }
+    
+    // Encodes a URL to a shortened URL.
+    public String encode(String longUrl) {
+        String tinyUrl = "http://tinyurl.com/"+afterEncoding;
+        afterEncoding++;
+        shortToLong.put(tinyUrl,longUrl);
+        // longToShort.put(longUrl,tinyUrl);
+        return tinyUrl;
+    }
+
+    // Decodes a shortened URL to its original URL.
+    public String decode(String shortUrl) {
+        return shortToLong.get(shortUrl);
+    }
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.decode(codec.encode(url));

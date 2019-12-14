@@ -1,0 +1,24 @@
+class Solution {
+    public boolean checkInclusion(String s1, String s2) {
+        int window = s1.length();
+        // System.out.println(window);
+        HashSet<String> set = new HashSet<String>();
+        
+        for(int i=0, j = i+window; j <= s2.length(); i++,j++ ){
+            String tmp = s2.substring(i,j);
+            char[] temp = tmp.toCharArray();
+            Arrays.sort(temp);
+            String sorted = String.valueOf(temp);
+            set.add(sorted);
+        }
+        // System.out.println(set.size());
+        char[] temp = s1.toCharArray();
+        Arrays.sort(temp);
+        String sorted = String.valueOf(temp);
+        
+        if(set.contains(sorted))
+            return true;
+        else
+            return false;
+    }
+}

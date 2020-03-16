@@ -1,0 +1,17 @@
+class Solution {
+    public int countSquares(int[][] matrix) {
+        int sum = 0;
+        int x = matrix.length;
+        int y = matrix[0].length;
+        int[][] dp = new int[x+1][y+1];
+        
+        for(int i=1;i<=x; i++){
+            for(j=1;j<=y;j++){
+                if(matrix[i-1][j-1] == 0) return;
+                dp[i][j] = Math.min(Math.min(dp[i-1][j],dp[i][j-1]),dp[i-1][j-1]) + 1;
+                sum += dp[i][j];
+            }
+        }
+        return sum;
+    }
+}

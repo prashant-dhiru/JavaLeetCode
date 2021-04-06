@@ -1,0 +1,22 @@
+import java.util.*;
+class Solution {
+    public boolean isSubsequence(String s, String t){
+        if(s.length() == 0){
+            return true;
+        }if(t.length() == 0){
+            return false;
+        }
+        
+        int m=0,n=0;
+        for(int i=0; i<t.length(); i++){
+            if(s.charAt(m) == t.charAt(n)){
+                m++; n++;
+            }else{
+                n++;
+            }
+            if(m == s.length())
+                return true;
+        }
+        return false;
+    }
+}
